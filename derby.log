@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Mon May 27 20:20:00 BRT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016a-fb97-f2e3-00000b148f10 
+on database directory memory:/home/welton/Projetos/Trabalho-Faculdade/DCC193-T2-2019-01-Welton/dcc193t2/testdb with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@3d4eac69 
+Loaded from file:/home/welton/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=11.0.3+7-Ubuntu-1ubuntu218.04.1
+user.dir=/home/welton/Projetos/Trabalho-Faculdade/DCC193-T2-2019-01-Welton/dcc193t2
+os.name=Linux
+os.arch=amd64
+os.version=4.18.0-20-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
