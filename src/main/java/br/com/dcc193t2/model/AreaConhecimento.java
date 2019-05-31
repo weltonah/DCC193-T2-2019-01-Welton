@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 public class AreaConhecimento {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String descricao;
 
@@ -69,14 +69,5 @@ public class AreaConhecimento {
     }
 
 
-
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", descricao='" + getDescricao() + "'" +
-            ", refAvaliador='" + getRefAvaliador() + "'" +
-            "}";
-    }
 
 }

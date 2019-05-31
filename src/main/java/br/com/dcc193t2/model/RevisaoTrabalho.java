@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 public class RevisaoTrabalho {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @ManyToOne

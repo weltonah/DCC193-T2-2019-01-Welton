@@ -9,7 +9,7 @@ import br.com.dcc193t2.model.RevisaoTrabalho;
  * RevisaoRepository
  */
 @Repository
-public interface RevisaoTrabalhoRepository extends JpaRepository<Long, RevisaoTrabalho> {
+public interface RevisaoTrabalhoRepository extends JpaRepository<RevisaoTrabalho, Long> {
 
     
 }

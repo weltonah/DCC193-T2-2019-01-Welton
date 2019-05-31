@@ -17,7 +17,7 @@ import javax.persistence.FetchType;
 public class Avaliador {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String nome;
     private String email;

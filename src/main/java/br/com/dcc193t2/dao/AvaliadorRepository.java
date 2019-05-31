@@ -5,12 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import br.com.dcc193t2.model.Avaliador;
 
-
 /**
  * AvaliadorRepository
  */
 @Repository
-public interface AvaliadorRepository extends JpaRepository<Long, Avaliador> {
+public interface AvaliadorRepository extends JpaRepository<Avaliador, Long> {
 
-    
 }
