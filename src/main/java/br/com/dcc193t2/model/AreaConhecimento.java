@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class AreaConhecimento {
@@ -15,18 +13,12 @@ public class AreaConhecimento {
     private Long id;
     private String descricao;
 
-    @ManyToOne
-    @JoinColumn(name="avaliador_id")
-    private Avaliador refAvaliador;
-
-
     public AreaConhecimento() {
     }
 
-    public AreaConhecimento(Long id, String descricao, Avaliador refAvaliador) {
+    public AreaConhecimento(Long id, String descricao) {
         this.id = id;
         this.descricao = descricao;
-        this.refAvaliador = refAvaliador;
     }
 
     public Long getId() {
@@ -45,14 +37,6 @@ public class AreaConhecimento {
         this.descricao = descricao;
     }
 
-    public Avaliador getRefAvaliador() {
-        return this.refAvaliador;
-    }
-
-    public void setRefAvaliador(Avaliador refAvaliador) {
-        this.refAvaliador = refAvaliador;
-    }
-
     public AreaConhecimento id(Long id) {
         this.id = id;
         return this;
@@ -63,11 +47,13 @@ public class AreaConhecimento {
         return this;
     }
 
-    public AreaConhecimento refAvaliador(Avaliador refAvaliador) {
-        this.refAvaliador = refAvaliador;
-        return this;
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", descricao='" + getDescricao() + "'" +
+            "}";
     }
-
-
 
 }

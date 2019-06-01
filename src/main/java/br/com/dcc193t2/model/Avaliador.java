@@ -23,7 +23,7 @@ public class Avaliador {
     private String email;
     private String codigoAcesso;
 
-    @OneToMany(mappedBy = "refAvaliador",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany
     private List<AreaConhecimento> areaConhecimento;
 
     public Avaliador() {

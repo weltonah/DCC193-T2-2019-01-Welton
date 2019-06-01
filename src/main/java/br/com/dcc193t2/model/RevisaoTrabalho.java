@@ -81,4 +81,24 @@ public class RevisaoTrabalho {
         this.reftrabalho = reftrabalho;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", refavaliador='" + getRefavaliador() + "'" +
+            ", reftrabalho='" + getReftrabalho() + "'" +
+            ", nota='" + getNota() + "'" +
+            ", descricao='" + getDescricao() + "'" +
+            ", status='" + getStatus() + "'" +
+            "}";
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

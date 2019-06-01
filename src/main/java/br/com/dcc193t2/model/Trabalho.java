@@ -66,4 +66,24 @@ public class Trabalho {
         return areaConhecimento;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", titulo='" + getTitulo() + "'" +
+            ", descricao='" + getDescricao() + "'" +
+            ", url='" + getUrl() + "'" +
+            ", areaConhecimento='" + getAreaConhecimento() + "'" +
+            "}";
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
 }
