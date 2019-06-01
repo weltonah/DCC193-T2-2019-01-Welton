@@ -13,6 +13,6 @@ import br.com.dcc193t2.model.Avaliador;
 @Repository
 public interface AvaliadorRepository extends JpaRepository<Avaliador, Long> {
 
-    // Optional<Avaliador> findByEmailAndCodigoAcesso(Avaliador avaliador);
+	Avaliador findFirstByEmailAndCodigoAcesso(String email, String codigoAcesso);
 
 }

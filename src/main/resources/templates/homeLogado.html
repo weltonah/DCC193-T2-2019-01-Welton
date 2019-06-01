@@ -10,8 +10,11 @@
     <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
 </head>
 <body>
-    <a class="btn btn-primary" th:href="@{./avaliador/}" role="button">aaaaa</a>
-    <a class="btn btn-primary" th:href="@{./trabalho/}" role="button">bbbb</a>
+    
+        <span> Lista de Áreas</span>
+        <div th:each="listaArea: ${avaliador.areaConhecimento}">
+            <span th:text="${listaArea.descricao}"></span>
+        </div>
 </body>
 
 

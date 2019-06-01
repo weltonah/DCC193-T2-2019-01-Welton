@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
  * Revisao
  */
 @Entity
-public class RevisaoTrabalho {
+public class Revisao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -28,11 +28,11 @@ public class RevisaoTrabalho {
 
     private int status;
 
-    public RevisaoTrabalho() {
+    public Revisao() {
 
     }
 
-    public RevisaoTrabalho(Avaliador avaliador, Trabalho trabalho, int nota, String descricao, int status) {
+    public Revisao(Avaliador avaliador, Trabalho trabalho, int nota, String descricao, int status) {
         this.refavaliador = avaliador;
         this.reftrabalho = trabalho;
         this.nota = nota;

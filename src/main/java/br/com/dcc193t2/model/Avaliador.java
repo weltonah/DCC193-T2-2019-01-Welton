@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -23,7 +24,7 @@ public class Avaliador {
     private String email;
     private String codigoAcesso;
 
-    @OneToMany
+    @ManyToMany
     private List<AreaConhecimento> areaConhecimento;
 
     public Avaliador() {
