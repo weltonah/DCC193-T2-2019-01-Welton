@@ -35,6 +35,7 @@ public class Avaliador {
         this.email = email;
         this.codigoAcesso = codigoAcesso;
         this.areaConhecimento = areaConhecimento;
+        
     }
 
     public Long getId() {

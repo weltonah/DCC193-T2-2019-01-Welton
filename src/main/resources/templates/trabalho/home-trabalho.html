@@ -21,6 +21,8 @@
                 <table>
                     <thead>
                         <tr>
+                            <th></th>
+                            <th></th>
                             <th>Título</th>
                             <th>Descrição</th>
                             <th>URL</th>
@@ -28,7 +30,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="listaTrabalho: ${listaTrabalho}" >
+                        <tr th:each="listaTrabalho: ${listaTrabalho}">
+                            <td>
+
+                                <a class="btn btn-primary" th:href="@{'./editar/' + ${listaTrabalho.id}}"
+                                    role="button">Editar</a>
+                            </td>
+                            <td>
+
+                                <a class="btn btn-primary" th:href="@{'./deletar/' + ${listaTrabalho.id}}"
+                                    role="button">Deletar</a>
+                            </td>
                             <td th:text=${listaTrabalho.titulo}></td>
                             <td th:text=${listaTrabalho.descricao}></td>
                             <td th:text=${listaTrabalho.url}></td>

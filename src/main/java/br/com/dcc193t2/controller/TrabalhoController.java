@@ -3,6 +3,7 @@ package br.com.dcc193t2.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,8 +28,6 @@ public class TrabalhoController {
 
     @RequestMapping("")
     public String homeTrabalho(Model model){
-        System.out.println(trabalhoRepository.findAll().size());
-        trabalhoRepository.findAll().forEach(u-> System.out.println(u.toString()) );
         model.addAttribute("listaTrabalho",trabalhoRepository.findAll());
         return "trabalho/home-trabalho";
     }
@@ -39,6 +38,26 @@ public class TrabalhoController {
         model.addAttribute("listaArea",areaConhecimentoRepository.findAll());
         return "trabalho/criar-trabalho";
     }
+
+    @RequestMapping("/editar/{id}")
+    public String editarTrabalho(@PathVariable Long id, Model model){
+        model.addAttribute("trabalho",trabalhoRepository.findById(id).get());
+        model.addAttribute("listaArea",areaConhecimentoRepository.findAll());
+        return "trabalho/editar-trabalho";
+    }
+
+    @RequestMapping("/deletar/{id}")
+    public String deletarTrabalho(@PathVariable Long id){
+        trabalhoRepository.deleteById(id);
+        return "redirect:/trabalho/";
+    }
+
+    @RequestMapping("/editar/salvar")
+    public String editarsalvarTrabalho(Trabalho trabalho){
+        trabalhoRepository.save(trabalho);
+        return "redirect:/trabalho/";
+    }
+    
 
     @RequestMapping("/salvar")
     public String salvarTrabalho(Trabalho trabalho){

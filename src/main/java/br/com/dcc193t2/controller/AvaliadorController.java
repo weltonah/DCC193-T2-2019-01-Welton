@@ -3,6 +3,7 @@ package br.com.dcc193t2.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.dcc193t2.dao.AreaConhecimentoRepository;
@@ -33,6 +34,24 @@ public class AvaliadorController {
         model.addAttribute("avaliador",new Avaliador());
         model.addAttribute("listaArea",areaConhecimentoRepository.findAll());
         return "avaliador/criar-avaliador";
+    }
+    @RequestMapping("/editar/{id}")
+    public String editarAvaliador(@PathVariable Long id, Model model){
+        model.addAttribute("avaliador",avaliadorRepository.findById(id).get());
+        model.addAttribute("listaArea",areaConhecimentoRepository.findAll());
+        return "avaliador/editar-avaliador";
+    }
+
+    @RequestMapping("/editar/salvar")
+    public String editarsalvarAvaliador(Avaliador avaliador){
+        avaliadorRepository.save(avaliador);
+        return "redirect:/avaliador/";
+    }
+
+    @RequestMapping("/deletar/{id}")
+    public String deletarAvaliador(@PathVariable Long id){
+        avaliadorRepository.deleteById(id);
+        return "redirect:/avaliador/";
     }
 
     @RequestMapping("/salvar")
