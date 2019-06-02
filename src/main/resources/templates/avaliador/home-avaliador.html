@@ -23,6 +23,7 @@
                         <tr>
                             <th></th>
                             <th></th>
+                            <th></th>
                             <th>Nome</th>
                             <th>Email</th>
                             <th>Code Acesso</th>
@@ -40,6 +41,11 @@
 
                                 <a class="btn btn-primary" th:href="@{'./deletar/' + ${listaAvaliadores.id}}"
                                     role="button">Deletar</a>
+                            </td>
+                            <td>
+
+                                <a class="btn btn-primary" th:href="@{'./listaRevisao/' + ${listaAvaliadores.id}}"
+                                    role="button">Lista de Reviões</a>
                             </td>
                             <td th:text=${listaAvaliadores.nome}></td>
                             <td th:text=${listaAvaliadores.email}></td>
