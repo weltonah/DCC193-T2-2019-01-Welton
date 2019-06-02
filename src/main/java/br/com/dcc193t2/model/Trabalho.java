@@ -26,16 +26,24 @@ public class Trabalho {
 
     }
 
-    public Trabalho(String titulo, String descricao, String url, AreaConhecimento areaConhecimento) {
+    public Trabalho(Long id, String titulo, String descricao, String url, AreaConhecimento areaConhecimento) {
+        this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
         this.url = url;
         this.areaConhecimento = areaConhecimento;
+    }
 
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitulo() {
-        return titulo;
+        return this.titulo;
     }
 
     public void setTitulo(String titulo) {
@@ -43,7 +51,7 @@ public class Trabalho {
     }
 
     public String getDescricao() {
-        return descricao;
+        return this.descricao;
     }
 
     public void setDescricao(String descricao) {
@@ -51,20 +59,47 @@ public class Trabalho {
     }
 
     public String getUrl() {
-        return url;
+        return this.url;
     }
 
     public void setUrl(String url) {
         this.url = url;
     }
 
+    public AreaConhecimento getAreaConhecimento() {
+        return this.areaConhecimento;
+    }
+
     public void setAreaConhecimento(AreaConhecimento areaConhecimento) {
         this.areaConhecimento = areaConhecimento;
     }
 
-    public AreaConhecimento getAreaConhecimento() {
-        return areaConhecimento;
+    public Trabalho id(Long id) {
+        this.id = id;
+        return this;
     }
+
+    public Trabalho titulo(String titulo) {
+        this.titulo = titulo;
+        return this;
+    }
+
+    public Trabalho descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
+    }
+
+    public Trabalho url(String url) {
+        this.url = url;
+        return this;
+    }
+
+    public Trabalho areaConhecimento(AreaConhecimento areaConhecimento) {
+        this.areaConhecimento = areaConhecimento;
+        return this;
+    }
+
+
 
     @Override
     public String toString() {
@@ -75,14 +110,6 @@ public class Trabalho {
             ", url='" + getUrl() + "'" +
             ", areaConhecimento='" + getAreaConhecimento() + "'" +
             "}";
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
 
