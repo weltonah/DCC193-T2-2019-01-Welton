@@ -1,5 +1,7 @@
 package br.com.dcc193t2.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,24 +24,5 @@ public class HomeController {
     public String index(){
         return "index";
     }
-
-    @RequestMapping("login")
-    public String login(Model model){
-        model.addAttribute("avaliador",new Avaliador());
-        return "login";
-    }
-
-    @RequestMapping("efetuarLogin")
-    public String efetuarLogin(Avaliador avaliador, Model model){
-        Avaliador avaliadorQuery = avaliadorRepository.findFirstByEmailAndCodigoAcesso(avaliador.getEmail(),avaliador.getCodigoAcesso());
-        System.out.println(avaliador);
-        System.out.println(avaliadorQuery);
-        if(avaliadorQuery != null){
-            model.addAttribute("avaliador", avaliadorQuery);
-            return "homeLogado";
-        }else{
-            return "index";
-        }
-
-    }
+    
 }

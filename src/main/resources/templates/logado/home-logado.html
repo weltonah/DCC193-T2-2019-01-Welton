@@ -10,10 +10,11 @@
     <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
 </head>
 <body>
-    <a class="btn btn-primary" th:href="@{./avaliador/}" role="button">Avaliador</a>
-    <a class="btn btn-primary" th:href="@{./trabalho/}" role="button">Trabalho</a>
-    <a class="btn btn-primary" th:href="@{./revisao/}" role="button">Revisao</a>
-    <a class="btn btn-primary" th:href="@{./logado/}" role="button">login</a>
+    
+        <span> Lista de Áreas</span>
+        <div class="col-12" th:each="listaAreaConhecimento: ${avaliador.areaConhecimento}" >
+                <a class="btn btn-primary" th:href="@{'./listarTrabalhos/' + ${listaAreaConhecimento.id}}" role="button">Área de  <span th:text="${listaAreaConhecimento.descricao}"></span></a>
+        </div>
 </body>
 
 

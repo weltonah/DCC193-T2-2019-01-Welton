@@ -13,20 +13,23 @@
 
 <body>
     <div class="container">
-        <form th:action="@{./salvar}" th:object="${avaliador}" method="POST">
-            <label>Nome: <input type="text" th:field="*{nome}" /></label>
-            <label>Email: <input type="text" th:field="*{email}" /></label>
-            <label>Codigo de Acesso: <input type="text" th:field="*{codigoAcesso}" /></label>
-            <div class="row">
-                <div class="col-6" th:each="listaArea: ${listaArea}" th:object=${AreaConhecimento}>
-                    <input class="form-check-input" type="checkbox" th:value="${listaArea.id}" name="areaConhecimento">
-                    <label class="form-check-label" for="defaultCheck1" th:text="${listaArea.descricao}">
 
-                    </label>
-                </div>
-            </div>
-            <input type="submit"  />
-            <input type="reset" />
+        <form  th:action="@{../salvarAvaliar/}" th:object="${revisao}" method="POST">
+            <input type="text" th:field="*{id}" class="d-none"/>
+            <label>Descrição: <input type="text" th:field="*{descricao}" /></label>
+            <label>Nota: <input type="number" th:field="*{nota}" /></label>
+            <label>
+                <span th:if="${revisao.status == 0}"> A fazer</span>
+                <span th:if="${revisao.status == 1}"> avaliado</span>
+                <span th:if="${revisao.status == 2}"> impedido</span>
+                <span th:if="${revisao.status == 3}"> validado</span>
+                <span th:if="${revisao.status == 3}"> invalidado</span>
+            </label>
+            <!-- <a class="btn btn-primary" th:href="@{'./salvarAvaliar/2' + ${listaArea.id}}" role="button">Revisar Agora </a> -->
+            <!-- <a class="btn btn-primary" th:href="@{'./salvarAvaliar/3' + ${listaArea.id}}" role="button">Pular </a> -->
+            <input type="submit" name="action" value="1" />
+            <input type="submit" name="action" value="2" />
+            <input type="submit" name="action" value="3" />
         </form>
     </div>
 </body>

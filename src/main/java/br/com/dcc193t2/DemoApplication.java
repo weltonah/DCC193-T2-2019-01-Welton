@@ -3,6 +3,8 @@ package br.com.dcc193t2;
 import java.util.Arrays;
 import java.util.Collections;
 
+import javax.crypto.NullCipher;
+
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -16,6 +18,7 @@ import br.com.dcc193t2.dao.RevisaoRepository;
 import br.com.dcc193t2.dao.TrabalhoRepository;
 import br.com.dcc193t2.model.AreaConhecimento;
 import br.com.dcc193t2.model.Avaliador;
+import br.com.dcc193t2.model.Revisao;
 import br.com.dcc193t2.model.Trabalho;
 
 @SpringBootApplication
@@ -32,6 +35,7 @@ public class DemoApplication {
 
 	@Autowired
 	TrabalhoRepository trabalhoRepository;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
@@ -120,6 +124,8 @@ public class DemoApplication {
 			 areaConhecimentoRepository.findById(6L).get(),
 			 areaConhecimentoRepository.findById(7L).get()
 			 ))));
+			  revisaoRepository.save( new Revisao(avaliadorRepository.findAll().get(0),
+			  trabalhoRepository.findAll().get(0), 2, "descricao", 1));
 		};
 	}
 

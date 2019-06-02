@@ -16,7 +16,7 @@
 
         <form th:action="@{./salvar}" th:object="${revisao}" method="POST">
             <label>Descrição: <input type="text" th:field="*{descricao}" /></label>
-            <label>Nota: <input type="Number" th:field="*{nota}" /></label>
+            <label>Nota: <input type="number" th:field="*{nota}" /></label>
             <span> Lista de trabalhos</span>
              <div class="row">
                 <div class="col-6" th:each="listaTrabalho, listaTrabalhoindex: ${listaTrabalho}" th:object=${Trabalho}>

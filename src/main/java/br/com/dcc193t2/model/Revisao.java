@@ -19,6 +19,7 @@ public class Revisao {
     private String descricao;
     private int status;
 
+    
     @ManyToOne
     private Avaliador refavaliador;
 
