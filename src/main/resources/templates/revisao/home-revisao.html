@@ -15,43 +15,46 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a class="btn btn-primary" th:href="@{./criar}" role="button">Criar Avaliador</a>
+                <a class="btn btn-primary" th:href="@{./criar}" role="button">Criar revisão</a>
             </div>
             <div class="col-12">
-                <!-- <table>
+                <table>
                     <thead>
                         <tr>
                             <th></th>
                             <th></th>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Code Acesso</th>
-                            <th>Área de Conhecimento</th>
+                            <th>Descrição</th>
+                            <th>Nota</th>
+                            <th>Status</th>
+                            <th>Nome do Trabalho</th>
+                            <th>Nome do Avaliador</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="listaAvaliadores: ${listaAvaliadores}">
+                        <tr th:each="listaRevisao: ${listaRevisao}">
                             <td>
 
-                                <a class="btn btn-primary" th:href="@{'./editar/' + ${listaAvaliadores.id}}"
+                                <a class="btn btn-primary" th:href="@{'./editar/' + ${listaRevisao.id}}"
                                     role="button">Editar</a>
                             </td>
                             <td>
-
-                                <a class="btn btn-primary" th:href="@{'./deletar/' + ${listaAvaliadores.id}}"
+                                <a class="btn btn-primary" th:href="@{'./deletar/' + ${listaRevisao.id}}"
                                     role="button">Deletar</a>
                             </td>
-                            <td th:text=${listaAvaliadores.nome}></td>
-                            <td th:text=${listaAvaliadores.email}></td>
-                            <td th:text=${listaAvaliadores.codigoAcesso}></td>
+                            <td th:text=${listaRevisao.descricao}></td>
+                            <td th:text=${listaRevisao.nota}></td>
                             <td>
-                                <div th:each="listaArea: ${listaAvaliadores.areaConhecimento}">
-                                    <span th:text="${listaArea.descricao}"></span>
-                                </div>
+                                <span th:if="${listaRevisao.status == 0}"> A fazer</span>
+                                <span th:if="${listaRevisao.status == 1}"> avaliado</span>
+                                <span th:if="${listaRevisao.status == 2}"> impedido</span>
+                                <span th:if="${listaRevisao.status == 3}"> validado</span>
+                                <span th:if="${listaRevisao.status == 3}"> invalidado</span>
                             </td>
+                            <td th:text=${listaRevisao.refavaliador.nome}></td>
+                            <td th:text=${listaRevisao.reftrabalho.titulo}></td>
                         </tr>
                     </tbody>
-                </table> -->
+                </table>
             </div>
         </div>
     </div>

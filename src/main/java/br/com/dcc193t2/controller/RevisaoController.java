@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.dcc193t2.dao.AreaConhecimentoRepository;
+import br.com.dcc193t2.dao.AvaliadorRepository;
 import br.com.dcc193t2.dao.RevisaoRepository;
+import br.com.dcc193t2.dao.TrabalhoRepository;
 import br.com.dcc193t2.dao.RevisaoRepository;
 import br.com.dcc193t2.model.AreaConhecimento;
 import br.com.dcc193t2.model.Revisao;
@@ -23,6 +25,13 @@ public class RevisaoController {
     @Autowired
     RevisaoRepository revisaoRepository;
 
+    @Autowired
+    TrabalhoRepository trabalhoRepository;
+
+
+    @Autowired
+    AvaliadorRepository avaliadorRepository;
+
 	@Autowired
     AreaConhecimentoRepository areaConhecimentoRepository;
 
@@ -34,15 +43,33 @@ public class RevisaoController {
 
     @RequestMapping("/criar")
     public String criarRevisao(Model model){
-        model.addAttribute("revisao",new Revisao());
         model.addAttribute("listaArea",areaConhecimentoRepository.findAll());
         return "revisao/criar-revisao";
     }
 
+    @RequestMapping("/criar/{id}")
+    public String criarRevisao(Revisao revisao,@PathVariable Long id,Model model ){
+        model.addAttribute("revisao",new Revisao());
+		model.addAttribute("listaTrabalho",trabalhoRepository.findByAreaConhecimento(
+            areaConhecimentoRepository.findById(id).get()
+        ));
+        model.addAttribute("listaAvaliador",avaliadorRepository.findByAreaConhecimento(
+            areaConhecimentoRepository.findById(id).get()
+        ));
+        return "revisao/criar-revisao-segunda-parte";
+    }
+                                                                                                                                                                                                                    
     @RequestMapping("/editar/{id}")
     public String editarRevisao(@PathVariable Long id, Model model){
-        model.addAttribute("revisao",revisaoRepository.findById(id).get());
-        model.addAttribute("listaArea",areaConhecimentoRepository.findAll());
+        Revisao revisao = revisaoRepository.findById(id).get();
+        model.addAttribute("revisao",revisao);
+        Long idAreaConhecimento = revisao.getReftrabalho().getAreaConhecimento().getId();
+        model.addAttribute("listaTrabalho",trabalhoRepository.findByAreaConhecimento(
+            areaConhecimentoRepository.findById(idAreaConhecimento).get()
+        ));
+        model.addAttribute("listaAvaliador",avaliadorRepository.findByAreaConhecimento(
+            areaConhecimentoRepository.findById(idAreaConhecimento).get()
+        ));
         return "revisao/editar-revisao";
     }
 
@@ -58,8 +85,7 @@ public class RevisaoController {
         return "redirect:/revisao/";
     }
     
-
-    @RequestMapping("/salvar")
+    @RequestMapping("/criar/salvar")
     public String salvarRevisao(Revisao revisao){
         revisaoRepository.save(revisao);
         return "redirect:/revisao/";

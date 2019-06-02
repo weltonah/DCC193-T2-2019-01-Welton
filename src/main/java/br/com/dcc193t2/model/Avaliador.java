@@ -6,10 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 
 /**
  * Avaliador
@@ -36,7 +33,7 @@ public class Avaliador {
         this.email = email;
         this.codigoAcesso = codigoAcesso;
         this.areaConhecimento = areaConhecimento;
-        
+
     }
 
     public Long getId() {
@@ -104,18 +101,11 @@ public class Avaliador {
         return this;
     }
 
-    
-
     @Override
     public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", nome='" + getNome() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", codigoAcesso='" + getCodigoAcesso() + "'" +
-            ", areaConhecimento='" + getAreaConhecimento() + "'" +
-            "}";
+        return "{" + " id='" + getId() + "'" + ", nome='" + getNome() + "'" + ", email='" + getEmail() + "'"
+                + ", codigoAcesso='" + getCodigoAcesso() + "'" + ", areaConhecimento='" + getAreaConhecimento() + "'"
+                + "}";
     }
-
 
 }

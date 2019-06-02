@@ -15,6 +15,9 @@ public class Revisao {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    private int nota;
+    private String descricao;
+    private int status;
 
     @ManyToOne
     private Avaliador refavaliador;
@@ -22,11 +25,6 @@ public class Revisao {
     @ManyToOne
     private Trabalho reftrabalho;
 
-    private int nota;
-
-    private String descricao;
-
-    private int status;
 
     public Revisao() {
 
@@ -85,8 +83,8 @@ public class Revisao {
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
-            ", refavaliador='" + getRefavaliador() + "'" +
-            ", reftrabalho='" + getReftrabalho() + "'" +
+            ", refavaliador='" + getRefavaliador().toString() + "'" +
+            ", reftrabalho='" + getReftrabalho().toString() + "'" +
             ", nota='" + getNota() + "'" +
             ", descricao='" + getDescricao() + "'" +
             ", status='" + getStatus() + "'" +

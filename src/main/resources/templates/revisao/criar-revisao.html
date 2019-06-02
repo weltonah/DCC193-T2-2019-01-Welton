@@ -13,21 +13,9 @@
 
 <body>
     <div class="container">
-        <form th:action="@{./salvar}" th:object="${revisao}" method="POST">
-            <label>Descricao: <input type="text" th:field="*{descricao}" /></label>
-            <label>Email: <input type="text" th:field="*{email}" /></label>
-            <label>Codigo de Acesso: <input type="text" th:field="*{codigoAcesso}" /></label>
-            <div class="row">
-                <div class="col-6" th:each="listaArea: ${listaArea}" th:object=${AreaConhecimento}>
-                    <input class="form-check-input" type="checkbox" th:value="${listaArea.id}" name="areaConhecimento">
-                    <label class="form-check-label" for="defaultCheck1" th:text="${listaArea.descricao}">
-
-                    </label>
-                </div>
-            </div>
-            <input type="submit" />
-            <input type="reset" />
-        </form>
+        <div class="col-12" th:each="listaArea: ${listaArea}" >
+            <a class="btn btn-primary" th:href="@{'./criar/' + ${listaArea.id}}" role="button">Criar revisão de <span th:text="${listaArea.descricao}"></span></a>
+        </div>
     </div>
 </body>
 

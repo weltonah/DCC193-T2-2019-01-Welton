@@ -58,7 +58,6 @@ public class TrabalhoController {
         return "redirect:/trabalho/";
     }
     
-
     @RequestMapping("/salvar")
     public String salvarTrabalho(Trabalho trabalho){
         trabalhoRepository.save(trabalho);

@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 public class Trabalho {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String titulo;
     private String descricao;
