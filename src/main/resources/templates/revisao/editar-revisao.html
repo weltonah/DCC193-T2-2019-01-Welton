@@ -12,61 +12,79 @@
 </head>
 
 <body>
+    <div class="col-12">
+        <a class="btn btn-primary" th:href="@{/}" role="button">home</a>
+    </div>
     <div class="container">
 
         <form th:action="@{./salvar}" th:object="${revisao}" method="POST">
-            <input type="text" th:field="*{id}" class="d-none"/>
-            <label>Descrição: <input type="text" th:field="*{descricao}" /></label>
-            <label>Nota: <input type="number" th:field="*{nota}" /></label>
-            <span> Lista de trabalhos</span>
-             <div class="row">
-                <div class="col-6" th:each="listaTrabalho, listaTrabalhoindex: ${listaTrabalho}" th:object=${Trabalho}>
-                    <input class="form-check-input" type="radio" 
-                    th:attr="checked=${revisao.reftrabalho.id == listaTrabalho.id ? true :false}" th:value="${listaTrabalho.id}" name="reftrabalho">
-                    <label class="form-check-label" for="defaultCheck1" th:text="${listaTrabalho.titulo}">
-                    </label>
-                </div>
+            <input type="text" th:field="*{id}" class="d-none" />
+            <div class="form-group">
+                <label>Descrição: <input type="text" class="form-control" th:field="*{descricao}" /></label>
             </div>
-            <span> Lista de Avaliador</span>
-            <div class="row">
-                <div class="col-6" th:each="listaAvaliador, listaAvaliadorindex: ${listaAvaliador}" th:object=${Avaliador}>
-                    <input class="form-check-input" type="radio" th:value="${listaAvaliador.id}"
-                    th:attr="checked=${revisao.refavaliador.id == listaAvaliador.id ? true :false}"
-                     name="refavaliador">
-                    <label class="form-check-label" for="defaultCheck1" th:text="${listaAvaliador.nome}">
-                    </label>
-                </div>
+            <div class="form-group">
+                <label>Nota: <input type="number" class="form-control" th:field="*{nota}" /></label>
             </div>
-            <span> Status</span>
             <div class="row">
-                    <div class="form-check">
-                <input class="form-check-input" type="radio" th:value="0" th:field="*{status}"
-                th:attr="checked=${revisao.status == 0 ? true :false}">
-                <label class="form-check-label" for="defaultCheck1">a fazer</label>
-                </div>
-                <div class="form-check">
-                <input class="form-check-input" type="radio" th:value="1" th:field="*{status}"
-                th:attr="checked=${revisao.status == 1 ? true :false}">
-                <label class="form-check-label" for="defaultCheck1">avaliado</label>
-                </div>
-                <div class="form-check">
-                <input class="form-check-input" type="radio" th:value="2" th:field="*{status}"
-                th:attr="checked=${revisao.status == 2 ? true :false}">
-                <label class="form-check-label" for="defaultCheck1">impedido</label>
-                </div>
-                <div class="form-check">
-                <input class="form-check-input" type="radio" th:value="3" th:field="*{status}"
-                th:attr="checked=${revisao.status == 3 ? true :false}">
-                <label class="form-check-label" for="defaultCheck1">validado</label>
+                <div class="col-4 card">
+                    <label> Lista de trabalhos</label>
+                    <div class="row card-body">
+                        <div class="col-12" th:each="listaTrabalho, listaTrabalhoindex: ${listaTrabalho}"
+                            th:object=${Trabalho}>
+                            <input class="form-check-input" type="radio"
+                                th:attr="checked=${revisao.reftrabalho.id == listaTrabalho.id ? true :false}"
+                                th:value="${listaTrabalho.id}" name="reftrabalho">
+                            <label class="form-check-label" for="defaultCheck1" th:text="${listaTrabalho.titulo}">
+                            </label>
+                        </div>
                     </div>
-                <div class="form-check">
-                <input class="form-check-input" type="radio" th:value="4" th:field="*{status}"
-                th:attr="checked=${revisao.status == 4 ? true :false}">
-                <label class="form-check-label" for="defaultCheck1">invalidado</label>
                 </div>
-            </div> 
-            <input type="submit" />
-            <input type="reset" />
+                <div class="col-4 card">
+                    <label> Lista de Avaliador</label>
+                    <div class="row card-body">
+                        <div class="col-12" th:each="listaAvaliador, listaAvaliadorindex: ${listaAvaliador}"
+                            th:object=${Avaliador}>
+                            <input class="form-check-input" type="radio" th:value="${listaAvaliador.id}"
+                                th:attr="checked=${revisao.refavaliador.id == listaAvaliador.id ? true :false}"
+                                name="refavaliador">
+                            <label class="form-check-label" for="defaultCheck1" th:text="${listaAvaliador.nome}">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 card">
+                    <label>Status</label>
+                    <div class="row card-body">
+                        <div class="form-check col-12">
+                            <input class="form-check-input" type="radio" th:value="0" th:field="*{status}"
+                                th:attr="checked=${revisao.status == 0 ? true :false}">
+                            <label class="form-check-label" for="defaultCheck1">a fazer</label>
+                        </div>
+                        <div class="form-check col-12">
+                            <input class="form-check-input" type="radio" th:value="1" th:field="*{status}"
+                                th:attr="checked=${revisao.status == 1 ? true :false}">
+                            <label class="form-check-label" for="defaultCheck1">avaliado</label>
+                        </div>
+                        <div class="form-check col-12">
+                            <input class="form-check-input" type="radio" th:value="2" th:field="*{status}"
+                                th:attr="checked=${revisao.status == 2 ? true :false}">
+                            <label class="form-check-label" for="defaultCheck1">impedido</label>
+                        </div>
+                        <div class="form-check col-12">
+                            <input class="form-check-input" type="radio" th:value="3" th:field="*{status}"
+                                th:attr="checked=${revisao.status == 3 ? true :false}">
+                            <label class="form-check-label" for="defaultCheck1">validado</label>
+                        </div>
+                        <div class="form-check col-12">
+                            <input class="form-check-input" type="radio" th:value="4" th:field="*{status}"
+                                th:attr="checked=${revisao.status == 4 ? true :false}">
+                            <label class="form-check-label" for="defaultCheck1">invalidado</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary" />
+            <input type="reset" class="btn btn-outline-primary" />
         </form>
     </div>
 </body>

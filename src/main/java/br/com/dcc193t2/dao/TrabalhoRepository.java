@@ -21,7 +21,7 @@ public interface TrabalhoRepository extends JpaRepository<Trabalho, Long> {
 	@Query("SELECT trab from Trabalho trab"
 	+ " inner join Revisao as rev on rev.reftrabalho.id = trab.id "
 	+ " inner join Avaliador as ava on rev.refavaliador.id = ava.id "
-	+ " where ava.id = ?1 and trab.areaConhecimento.id = ?2")
+	+ " where ava.id = ?1 and trab.areaConhecimento.id = ?2 and rev.status = 1")
 	List<Trabalho> findByIdAvalaliadorAndIdAreaConhecimentoOrderByStatus(Long idAvaliador, Long idArea);
 
 }

@@ -12,18 +12,21 @@
 </head>
 
 <body>
+    <div class="col-12">
+        <a class="btn btn-primary" th:href="@{/}" role="button">home</a>
+    </div>
     <div class="container">
         <div class="col-12">
-            <table>
+            <table class="table ">
                 <thead>
                     <tr>
-                        <th>Descrição revisao</th>
-                        <th>Nota</th>
-                        <th>Nome Trabalho</th>
-                        <th>Status Atual</th>
-                        <th>Alterar Status para</th>
-                        <th></th>
-                        <th></th>
+                        <th scope="col">Descrição revisao</th>
+                        <th scope="col">Nota</th>
+                        <th scope="col">Nome Trabalho</th>
+                        <th scope="col">Status Atual</th>
+                        <th scope="col">Alterar Status para</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,7 +34,7 @@
                         <form th:action="@{'../mudarStatusRevisao/' + ${listaRevisao.id}}" th:object="${revisao}"
                             method="POST">
                             <td>
-                                <input type="text" name="id" th:value="${listaRevisao.id}" class="d-none"/>
+                                <input type="text" name="id" th:value="${listaRevisao.id}" class="d-none" />
                                 <span th:text=${listaRevisao.descricao}></span>
                             </td>
                             <td>

@@ -71,27 +71,28 @@ public class LoginController {
     }
 
     @RequestMapping("/salvarAvaliar")
-    public String salvarAvaliarTrabalhos(@RequestParam("action") int tipoAcao,
+    public String salvarAvaliarTrabalhos(@RequestParam("action") String tipoAcao,
      Revisao revisao, HttpSession session){
         Revisao revisaoSession = (Revisao) session.getAttribute("revisaoAvaliada");
         Long idarea = revisaoSession.getReftrabalho().getAreaConhecimento().getId();
         System.out.println(revisao.getDescricao() + " " + revisao.getNota());
         //Revisar Depois
-        if(tipoAcao == 1){
+        System.out.println(tipoAcao);
+        if(tipoAcao.contentEquals("Revisar Depois")){
             revisaoSession.setDescricao(revisao.getDescricao());
             revisaoSession.setNota(revisao.getNota());
             revisaoSession.setStatus(0);
             revisaoRepository.save(revisaoSession);
         }
         // Revisar agora 
-        else if(tipoAcao == 2){
+        else if(tipoAcao.contentEquals("Revisar Agora")){
             revisaoSession.setDescricao(revisao.getDescricao());
             revisaoSession.setNota(revisao.getNota());
             revisaoSession.setStatus(1);
             revisaoRepository.save(revisaoSession);
         }
         // Pular
-        else if(tipoAcao == 3){
+        else if(tipoAcao.contentEquals("Pular")){
             revisaoSession.setDescricao(revisao.getDescricao());
             revisaoSession.setNota(revisao.getNota());
             revisaoSession.setStatus(2);

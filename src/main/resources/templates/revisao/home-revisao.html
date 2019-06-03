@@ -12,33 +12,38 @@
 </head>
 
 <body>
+    <div class="col-12">
+        <a class="btn btn-primary" th:href="@{/}" role="button">home</a>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a class="btn btn-primary" th:href="@{./criar}" role="button">Criar revisão</a>
+                <a class="btn btn-primary" th:href="@{./criar}" role="button">
+                    <ion-icon name="add"></ion-icon> Criar revisão
+                </a>
             </div>
             <div class="col-12">
-                <table>
+                <table class="table ">
                     <thead>
                         <tr>
-                            <th></th>
-                            <th></th>
-                            <th>Descrição</th>
-                            <th>Nota</th>
-                            <th>Status</th>
-                            <th>Nome do Trabalho</th>
-                            <th>Nome do Avaliador</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Nota</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Nome do Trabalho</th>
+                            <th scope="col">Nome do Avaliador</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="listaRevisao: ${listaRevisao}">
                             <td>
 
-                                <a class="btn btn-primary" th:href="@{'./editar/' + ${listaRevisao.id}}"
+                                <a class="btn btn-outline-warning" th:href="@{'./editar/' + ${listaRevisao.id}}"
                                     role="button">Editar</a>
                             </td>
                             <td>
-                                <a class="btn btn-primary" th:href="@{'./deletar/' + ${listaRevisao.id}}"
+                                <a class="btn btn-outline-danger" th:href="@{'./deletar/' + ${listaRevisao.id}}"
                                     role="button">Deletar</a>
                             </td>
                             <td th:text=${listaRevisao.descricao}></td>

@@ -12,33 +12,38 @@
 </head>
 
 <body>
+    <div class="col-12">
+        <a class="btn btn-primary" th:href="@{/}" role="button">home</a>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a class="btn btn-primary" th:href="@{./criar}" role="button">Criar Avaliador</a>
+                <a class="btn btn-primary" th:href="@{./criar}" role="button">
+                    <ion-icon name="add"></ion-icon> Criar Avaliador
+                </a>
             </div>
             <div class="col-12">
-                <table>
+                <table class="table ">
                     <thead>
                         <tr>
-                            <th></th>
-                            <th></th>
-                            <th>Título</th>
-                            <th>Descrição</th>
-                            <th>URL</th>
-                            <th>Área de Conhecimento</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">URL</th>
+                            <th scope="col">Área de Conhecimento</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="listaTrabalho: ${listaTrabalho}">
                             <td>
 
-                                <a class="btn btn-primary" th:href="@{'./editar/' + ${listaTrabalho.id}}"
+                                <a class="btn btn-outline-warning" th:href="@{'./editar/' + ${listaTrabalho.id}}"
                                     role="button">Editar</a>
                             </td>
                             <td>
 
-                                <a class="btn btn-primary" th:href="@{'./deletar/' + ${listaTrabalho.id}}"
+                                <a class="btn btn-outline-danger" th:href="@{'./deletar/' + ${listaTrabalho.id}}"
                                     role="button">Deletar</a>
                             </td>
                             <td th:text=${listaTrabalho.titulo}></td>

@@ -12,9 +12,13 @@
 </head>
 
 <body>
+    <div class="col-12">
+        <a class="btn btn-primary" th:href="@{/}" role="button">home</a>
+    </div>
     <div class="container">
-        <div class="col-12" th:each="listaArea: ${listaArea}" >
-            <a class="btn btn-primary" th:href="@{'./criar/' + ${listaArea.id}}" role="button">Criar revisão de <span th:text="${listaArea.descricao}"></span></a>
+        <div class="col-12" th:each="listaArea: ${listaArea}">
+            <a class="btn btn-primary" th:href="@{'./criar/' + ${listaArea.id}}" role="button">Criar revisão de <span
+                    th:text="${listaArea.descricao}"></span></a>
         </div>
     </div>
 </body>
